@@ -19,3 +19,5 @@ class Enrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     enrollment_date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=[('active', 'Active'), ('completed', 'Completed'), ('dropped', 'Dropped')], default='active')
+
+
