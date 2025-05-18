@@ -18,8 +18,12 @@ def decorator(func):
     def wrapper(*args,**kwargs):
         print("this is args of deco",args,kwargs)
         print("hello")
-        func(*args,**kwargs)
+        result=func(*args,**kwargs)
+        if result == "From is admin":
+            print(result,"result")
+            return False
         print("bye")
+        return result
     return wrapper
 
 
@@ -28,7 +32,7 @@ def is_admin(func):
         print("this is args of isadmin",args,kwargs)
         if not args[0]:
             print(f"{args[1]} is not a admin!")
-            return False
+            return "From is admin"
         return func(args[1])
     return wrapper
 
@@ -55,7 +59,9 @@ if __name__ == '__main__':
     # testing()
     # printname1("ketu")
     # printname2(True,"sanjana")
-    printname3(False,"time")
+    printname3(False, "time")  # Not admin
+    print("---")
+    printname3(True, "time") 
 
 
 
